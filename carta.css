@@ -1,0 +1,232 @@
+/* Variables de color rosa e inicialización */
+:root {
+    --rosa-oscuro: #ff4d6d;
+    --rosa-medio: #ff758f;
+    --rosa-claro: #ffb3c1;
+    --rosa-pastel: #fff0f3;
+    --blanco-carta: #fffafb;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(135deg, var(--rosa-pastel), #ffe3e8);
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-top: 40px;
+    padding: 0 20px;
+}
+
+header h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    color: var(--rosa-oscuro);
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+}
+
+header p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Contenedor de Sobres */
+.buzon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    padding: 40px 20px;
+    width: 100%;
+}
+
+/* Estructura 3D del Sobre */
+.sobre-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    perspective: 1000px; /* Activa el entorno 3D */
+}
+
+.sobre {
+    position: relative;
+    width: 180px;
+    height: 120px;
+    background-color: var(--rosa-claro);
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+/* Solapa superior del sobre */
+.solapa {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 90px solid transparent;
+    border-right: 90px solid transparent;
+    border-top: 70px solid var(--rosa-medio);
+    transform-origin: top;
+    transition: transform 0.4s ease, border-top-color 0.4s;
+    z-index: 3;
+}
+
+/* Cuerpo del sobre (los lados y frente) */
+.cuerpo-sobre {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 90px solid rgba(255, 255, 255, 0.2);
+    border-right: 90px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 60px solid var(--rosa-medio);
+    z-index: 4;
+    border-radius: 0 0 10px 10px;
+}
+
+/* Efecto visual de cierre interno */
+.cuerpo-sobre::before {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -90px;
+    width: 0;
+    height: 0;
+    border-left: 90px solid var(--rosa-claro);
+    border-right: 90px solid transparent;
+    border-bottom: 60px solid transparent;
+}
+
+/* Carta asomada inicialmente */
+.carta-asomada {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 150px;
+    height: 90px;
+    background: var(--blanco-carta);
+    border-radius: 5px;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    transition: transform 0.4s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Animaciones al pasar el mouse por encima (HOVER 3D) */
+.sobre-wrapper:hover .sobre {
+    transform: translateY(-5px) rotateX(10deg);
+}
+
+.sobre-wrapper:hover .solapa {
+    transform: rotateX(180deg); /* Abre la solapa hacia arriba en 3D */
+    border-top-color: var(--rosa-claro);
+    z-index: 1; /* Pasa atrás de la carta */
+}
+
+.sobre-wrapper:hover .carta-asomada {
+    transform: translateY(-30px); /* Sube la carta sutilmente */
+}
+
+.etiqueta-sobre {
+    margin-top: 15px;
+    font-weight: 600;
+    color: var(--rosa-oscuro);
+    background-color: white;
+    padding: 4px 15px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+/* Ventana Emergente / MODAL */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-contenido {
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+    animation: abrirModal 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes abrirModal {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Estilo de la hoja de papel física */
+.hoja-carta {
+    background: var(--blanco-carta);
+    background-image: linear-gradient(#e8e8e8 1px, transparent 1px);
+    background-size: 100% 30px;
+    padding: 50px 30px;
+    border-radius: 4px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    min-height: 250px;
+    border-left: 3px double #ffccd5;
+}
+
+#texto-carta {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: #4a4a4a;
+    line-height: 30px;
+    text-align: center;
+}
+
+.boton-cerrar {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.boton-cerrar:hover {
+    color: var(--rosa-claro);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.4);
+    color: #888;
+    font-size: 0.9rem;
+}

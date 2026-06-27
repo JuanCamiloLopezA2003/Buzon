@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Un Detalle Especial Para Ti ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Carta.css">
+</head>
+<body>
+
+    <header>
+        <h1>Un Buzón Lleno de Razones</h1>
+        <p>Feliz cumpleaños a la personita que adoro con toda mi alma. 🌸 Hoy quería regalarte algo diferente, 
+            algo único que demostrara el tiempo y el amor que te tengo, así que me puse a programar este detalle para ti. 
+            Es un pequeño buzón interactivo. Cuando entres y abras cada sobre, vas a escuchar un pedacito de mis sentimientos 
+            y a leer razones muy especiales por las que te amo tanto. Espero que te encante tanto como a mí me encantó 
+            crearlo pensando en ti. Que pases un día hermoso, bonita de mi vida, te mereces el universo entero. 🎉❤️
+        </p>
+    </header>
+
+    <main class="buzon-container">
+        
+        <div class="sobre-wrapper" onclick="abrirCarta(1)">
+            <div class="sobre">
+                <div class="solapa"></div>
+                <div class="carta-asomada">❤️</div>
+                <div class="cuerpo-sobre"></div>
+            </div>
+            <p class="etiqueta-sobre">Te amo</p>
+        </div>
+
+        <div class="sobre-wrapper" onclick="abrirCarta(2)">
+            <div class="sobre">
+                <div class="solapa"></div>
+                <div class="carta-asomada">✨</div>
+                <div class="cuerpo-sobre"></div>
+            </div>
+            <p class="etiqueta-sobre">De verdad</p>
+        </div>
+
+        <div class="sobre-wrapper" onclick="abrirCarta(3)">
+            <div class="sobre">
+                <div class="solapa"></div>
+                <div class="carta-asomada">🌸</div>
+                <div class="cuerpo-sobre"></div>
+            </div>
+            <p class="etiqueta-sobre">Brendita</p>
+        </div>
+
+        <div class="sobre-wrapper" onclick="abrirCarta(4)">
+            <div class="sobre">
+                <div class="solapa"></div>
+                <div class="carta-asomada">❄️️</div>
+                <div class="cuerpo-sobre"></div>
+            </div>
+            <p class="etiqueta-sobre">Mía</p>
+        </div>
+
+    </main>
+
+    <div id="modal-carta" class="modal">
+        <div class="modal-contenido">
+            <span class="boton-cerrar" onclick="cerrarCarta()">&times;</span>
+            <div class="hoja-carta">
+                <p id="texto-carta">Aquí va el mensaje...</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Hecho con todo mi amor por mí en el 2026 💕</p>
+    </footer>
+    <audio id="musica-fondo" src="music/Luis Sanic - Suspiros.mp3" loop></audio>
+    <script src="Cardscript.js"></script>
+</body>
+</html>
